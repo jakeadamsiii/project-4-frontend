@@ -19,4 +19,11 @@ angular
     }
 
     vm.login = login;
+
+    function authenticate(provider) {
+      $auth.authenticate(provider)
+        .then(() => $state.go('landing'));
+    }
+
+    vm.authenticate = authenticate;
 }
