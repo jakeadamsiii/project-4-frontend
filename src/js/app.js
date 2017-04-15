@@ -1,8 +1,8 @@
 angular
-  .module('fundraiser', ['satellizer'])
+  .module('fundraiser', ['ui.router', 'ngResource', 'satellizer', 'checklist-model', 'ui.bootstrap'])
   .constant('API_URL', 'http://localhost:3000/api')
   .config(Auth)
-  .controller('LoginCtrl', LoginCtrl);
+  .controller('AuthCtrl', AuthCtrl);
 
   Auth.$inject = ['$authProvider', 'API_URL'];
   function Auth($authProvider, API_URL) {
@@ -15,8 +15,8 @@ angular
     });
   }
 
-LoginCtrl.$inject = ['$auth'];
-function LoginCtrl($auth) {
+AuthCtrl.$inject = ['$auth'];
+function AuthCtrl($auth) {
   const vm = this;
 
   function register() {
