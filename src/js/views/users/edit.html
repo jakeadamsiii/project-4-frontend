@@ -1,0 +1,27 @@
+<section>
+<h1>Edit profile</h1>
+
+    <form ng-submit="profile.update()">
+      <div>
+        <label>Username</label>
+        <input type="text" ng-model="profile.user.name">
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="text" ng-model="profile.user.email">
+      </div>
+
+      <div>
+        <label>Password</label>
+        <input type="password" ng-model="profile.user.password">
+      </div>
+
+      <div>
+        <label>Password Confirmation</label>
+        <input type="password" ng-model="profile.user.password_confirmation">
+      </div>
+
+      <button>Update</button>
+    </form>
+</section>

@@ -17,7 +17,7 @@
         <p>{{ projectsShow.project.end_date}}</p>
         <p>£{{ projectsShow.project.target_amount}}</p>
         <a href="#" ng-click="projectsShow.delete()">Delete</a>
-        <a ui-sref="projectsEdit({ id: show.project.id})">Edit</a>
+        <a ui-sref="projectsEdit({ id: projectsShow.project.id})">Edit</a>
         <div class="buttons">
             <button type="button" id="£1">Donate £1</button>
             <button type="button" id="£5">Donate £5</button>

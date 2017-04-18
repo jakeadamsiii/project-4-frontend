@@ -2,7 +2,8 @@ angular
   .module('fundraiser')
   .controller('ProjectsIndexCtrl', ProjectsIndexCtrl)
   .controller('ProjectsNewCtrl', ProjectsNewCtrl)
-  .controller('ProjectsShowCtrl', ProjectsShowCtrl);
+  .controller('ProjectsShowCtrl', ProjectsShowCtrl)
+  .controller('ProjectsEditCtrl', ProjectsEditCtrl);
 
 ProjectsIndexCtrl.$inject = ['Project', 'filterFilter', 'orderByFilter', '$scope'];
 function ProjectsIndexCtrl(Project, filterFilter, orderByFilter, $scope){
@@ -68,4 +69,33 @@ vm.delete = projectsDelete;
       .$remove()
       .then(() => $state.go('projectsIndex'));
   }
+}
+
+
+ProjectsEditCtrl.$inject = ['Project', 'Category', '$stateParams', '$state'];
+function ProjectsEditCtrl(Project, Category, $stateParams, $state) {
+  const vm = this;
+
+  Project.get($stateParams)
+    .$promise
+    .then((project) => {
+      vm.project = project;
+      vm.project.end_date = new Date(project.end_date);
+    });
+
+  vm.categories = Category.query();
+
+  function projectsUpdate() {
+    console.log(vm.project);
+    // The vm.project gives us the full object user so I had to reassign the createdBy to an single Object.id inorder for the form to work because it only takes a Singledatavalue
+    // vm.project.createdBy = vm.project.createdBy.id;
+
+    Project
+      .update({id: vm.project.id, project: vm.project })
+      .$promise
+      .then((project) => $state.go('projectsShow', { id: vm.project.id }));
+
+  }
+
+  vm.update = projectsUpdate;
 }

@@ -36,7 +36,10 @@ function ProfileCtrl(User, $stateParams, $http, $state, $auth){
     vm.activeUser = response.data.user; // ActiveUser is the one being logged in
     });
 
+    vm.delete= profileDelete;
+
   function profileDelete() {
+    console.log('gone');
     $auth.logout();
     vm.user
       .$remove()
@@ -53,11 +56,13 @@ function EditCtrl(User, $state, $stateParams){
   vm.user = User.get($stateParams);
 //updates the user
   function updateUser(){
-    vm.user
-    .$update()
-    .then(()=> {
-      $state.go('profile', $stateParams);
-    });
+    console.log('cool');
+
+    User
+      .update({id: vm.user.id, user: vm.user })
+      .$promise
+      .then((user) => $state.go('profile', { id: vm.user.id }));
+
   }
 
 }

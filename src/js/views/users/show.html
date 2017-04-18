@@ -1,10 +1,12 @@
 <div class="row">
 
     <div class="col-lg-4 col-md-4 pic-and-buttons" >
-      {{profile}}
       <img ng-src="{{ profile.user.image }}" alt="{{profile.user.username}}">
       <p>{{profile.user.name}}</p>
-      <button class ="btn" ng-if="main.profilePageId === profile.user.id" ui-sref="editProfile({id: main.profilePageId})">Edit profile</button>
+      <p>{{profile.user.email}}</p>
+      <button class ="btn" ui-sref="profileEdit({id: main.profilePageId})">Edit profile</button>
 
-      <button class ="btn del" ng-if="main.profilePageId === profile.user.id" ng-click="profile.delete()">Delete Profile</button>
+      <button class ="btn del" ng-click="profile.delete()">Delete Profile</button>
     </div>
+
+</div>
