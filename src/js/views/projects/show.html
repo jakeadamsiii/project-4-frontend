@@ -1,0 +1,40 @@
+
+<section class="show">
+  <div class="row topshow">
+    <div class="col-lg-2">
+        <img ng-src="{{projectsShow.project.user.image}}">
+        <p>{{ projectsShow.project.user.name }}</p>
+    </div>
+    <div class="col-lg-10">
+        <h1>{{ projectsShow.project.title }}</h1>
+    </div>
+    </div>
+      <div class="row showmid">
+    <div class="col-lg-9">
+      <iframe src="https://www.youtube.com/embed/XGSy3_Czz8k?playlist=XGSy3_Czz8k&loop=1"> </iframe>
+    </div>
+    <div class="col-lg-3 sidebar">
+        <p>{{ projectsShow.project.end_date}}</p>
+        <p>£{{ projectsShow.project.target_amount}}</p>
+        <a href="#" ng-click="projectsShow.delete()">Delete</a>
+        <a ui-sref="projectsEdit({ id: show.project.id})">Edit</a>
+        <div class="buttons">
+            <button type="button" id="£1">Donate £1</button>
+            <button type="button" id="£5">Donate £5</button>
+            <button type="button" id="£10">Donate £10</button>
+        </div>
+    </div>
+    <div class="col-lg-12">
+  <div class="bar-border">
+    <div id="bar"></div>
+  </div>
+  <div id="moving-amount">
+      <p>^<br>
+      £<span id="donations">0</span></p>
+  </div>
+</div>
+  </div>
+  <div class="brief col-lg-12">
+    <p>{{ projectsShow.project.brief}}</p>
+  </div>
+</section>

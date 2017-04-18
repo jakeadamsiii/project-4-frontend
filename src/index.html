@@ -4,25 +4,39 @@
     <meta charset="utf-8">
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
     <title>Angular Stack Setup</title>
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
     <!-- endinject -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script>
-  $.get("http://localhost:3000/api/users").done(function(res){
-    console.log(res);
-  });
-</script>
   </head>
   <body ng-controller="MainCtrl as main">
-    <nav class="navbar">
+    <nav>
+    <div class="banner"></div>
+    <ul class="container">
+      <li class="logo"><h1 class="title">Fundr</h1></li>
+      <li class="menu-icon" ng-click="navIsOpen = !navIsOpen">&#9776;</li>
+      <div class="dropdown" ng-class="{ 'open': navIsOpen }">
+        <li><a ui-sref="landing">Home</a></li>
+        <li><a ui-sref="projectsIndex">Projects</a></li>
+        <li ng-if="!main.isAuthenticated()"><a ui-sref="login">Login</a></li>
+        <li ng-if="!main.isAuthenticated()"><a ui-sref="register">Register</a></li>
+        <li ng-if="main.isAuthenticated()"><a ui-sref="projectsNew">New Project</a></li>
+        <li ng-if="main.isAuthenticated()"><a ui-sref="profile({id: main.profilePageId})">My Profile</a></li>
+        <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
+      </div>
+    </ul>
+  </nav>
+
+    <!-- <nav class="navbar">
   <ul>
     <li><a ui-sref="login" ui-sref-active="active">Login</a></li>
     <li><a ui-sref="register" ui-sref-active="active">Register</a></li>
+    <li><a ui-sref="projectsNew" ui-sref-active="active">New project</a></li>
   </ul>
-</nav>
+</nav> -->
 <div class="container">
     <main ui-view></main>
   </div>
