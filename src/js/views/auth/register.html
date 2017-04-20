@@ -2,7 +2,6 @@
 <section>
 <h1>Register</h1>
 
-
     <form ng-submit="login.register()">
       <div>
         <label>Username</label>
@@ -12,6 +11,11 @@
       <div>
         <label>Email</label>
         <input type="text" ng-model="login.user.email">
+      </div>
+
+      <div class="form-group">
+        <label for="base64">Image</label>
+        <input type="file" base64 name="base64" id="base64" ng-model="login.user.base64">
       </div>
 
       <div>

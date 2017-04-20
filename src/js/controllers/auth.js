@@ -2,9 +2,10 @@ angular
   .module('fundraiser')
   .controller('AuthCtrl', AuthCtrl);
 
-  AuthCtrl.$inject = ['$auth', '$state'];
-  function AuthCtrl($auth, $state) {
+  AuthCtrl.$inject = ['User', '$auth', '$state'];
+  function AuthCtrl(User, $auth, $state) {
     const vm = this;
+    vm.user = {};
 
     function register() {
       $auth.signup(vm.user)
@@ -26,4 +27,19 @@ angular
     }
 
     vm.authenticate = authenticate;
-}
+
+
+//   vm.user = {};
+//
+//   function usersCreate() {
+//     // wrap the data in a `user` object
+//     User
+//       .save({ user: vm.user })
+//       .$promise
+//       .then(() => $state.go('usersIndex'));
+//   }
+//
+//   vm.create = usersCreate;
+// }
+
+ }

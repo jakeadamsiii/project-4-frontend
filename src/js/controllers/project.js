@@ -5,22 +5,20 @@ angular
   .controller('ProjectsShowCtrl', ProjectsShowCtrl)
   .controller('ProjectsEditCtrl', ProjectsEditCtrl);
 
-ProjectsIndexCtrl.$inject = ['Project', 'filterFilter', 'orderByFilter', '$scope'];
-function ProjectsIndexCtrl(Project, filterFilter, orderByFilter, $scope){
+ProjectsIndexCtrl.$inject = ['Project', 'Category', 'filterFilter', 'orderByFilter', '$scope'];
+function ProjectsIndexCtrl(Project, Category, filterFilter, orderByFilter, $scope){
   const vm = this;
 
   vm.all = Project.query();
+  vm.categories = Category.query();
 
     function filterProjects() {
-      vm.filtered = filterFilter(vm.all, vm.q);
+      const params =  { title: vm.q };
+      vm.filtered = filterFilter(vm.all, vm.q, params);
+
+      if(vm.category) params.category = vm.category;
     }
 
-
-  // Project.query().$promise.then((projects) => {
-  //   vm.all = projects;
-  //   filterProjects();
-  // });
-  //
   // function filterProjects(){
   //   const params =  { title: vm.q };
   //   if(vm.catagory) params.catagory = vm.catagory;
@@ -29,25 +27,42 @@ function ProjectsIndexCtrl(Project, filterFilter, orderByFilter, $scope){
   // }
 
   $scope.$watchGroup([
-    // ()=> vm.catagory,
+    ()=> vm.catagory,
     ()=> vm.q
     // ()=> vm.sort
   ],filterProjects);
 }
 
-ProjectsNewCtrl.$inject = ['Project', 'Category', 'User', '$state'];
-function ProjectsNewCtrl(Project, Category, User, $state) {
+ProjectsNewCtrl.$inject = ['Project', 'Category', 'User', '$state', '$uibModal'];
+function ProjectsNewCtrl(Project, Category, User, $state, $uibModal) {
   const vm = this;
+  vm.project = {};
   vm.users = User.query();
   vm.categories = Category.query();
 
   function submit(){
-    Project.save(vm.project)
+    Project
+    .save(vm.project)
     .$promise
     .then(()=> $state.go('projectsIndex'));
   }
 
   vm.submit = submit;
+
+  function openModal() {
+  $uibModal.open({
+    templateUrl: 'js/views/partials/newModal.html',
+    controller: 'ProjectsNewCtrl as projectsNew'
+  });
+  }
+
+vm.open = openModal;
+
+function closeModal() {
+  $uibModalInstance.close();
+}
+
+vm.close = closeModal;
 }
 
 ProjectsShowCtrl.$inject = ['Project', '$state','$stateParams'];
@@ -76,7 +91,8 @@ ProjectsEditCtrl.$inject = ['Project', 'Category', '$stateParams', '$state'];
 function ProjectsEditCtrl(Project, Category, $stateParams, $state) {
   const vm = this;
 
-  Project.get($stateParams)
+  Project
+    .get($stateParams)
     .$promise
     .then((project) => {
       vm.project = project;

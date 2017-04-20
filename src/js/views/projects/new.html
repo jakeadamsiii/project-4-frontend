@@ -2,6 +2,7 @@
 
   <h3>New project:</h3>
   <form ng-submit="projectsNew.submit()">
+
       <div>
         <label>Title</label>
         <input type="text" ng-model="projectsNew.project.title">
@@ -12,9 +13,9 @@
         <textarea type="text" ng-model="projectsNew.project.brief"></textarea>
       </div>
 
-      <div>
-        <label>Image</label>
-        <input type="text" ng-model="projectsNew.project.image">
+      <div class="form-group">
+        <label for="base64">Image</label>
+        <input type="file" base64 name="base64" id="base64" ng-model="projectsNew.project.base64">
       </div>
 
       <div>
@@ -51,5 +52,5 @@
 
       <button>Submit</button>
   </form>
-
+  <button ng-click="projectsNew.open()" class="btn btn-danger">Info</button>
 </div>

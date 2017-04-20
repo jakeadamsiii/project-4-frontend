@@ -8,7 +8,7 @@
   <li class="col-lg-4" ng-repeat="project in projectsIndex.filtered">
     <div>
       <a ui-sref="projectsShow({ id: project.id })">
-    <img ng-src="{{project.image}}">
+    <img ng-src="{{project.image_src}}">
     <h3>{{ project.title }}</h3></a>
       <p>0% funded</p>
       <p>Target: £{{project.target_amount}}</p>
@@ -23,13 +23,11 @@
       <h5>Search projects</h5>
       <input type="text" class="search" ng-model="projectsIndex.q" placeholder="Search...">
 
-      <!-- <h5>Category</h5>
-      <select class="cata" ng-model="index.catagory">
-        <option>All</option>
-        <option>Men</option>
-        <option>Women</option>
-        <option>Child</option>
-      </select> -->
+      <h5>Category</h5>
+      <select class="cata" ng-model="projectsIndex.category.id">
+            <option disabled selected>Please select</option>
+            <option ng-repeat="category in projectsIndex.categories" ng-value="{{category.id}}">{{category.name}}</option>
+          </select>
     </aside>
   </div>
 </section>

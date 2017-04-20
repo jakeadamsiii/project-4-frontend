@@ -1,7 +1,7 @@
 <div class="row">
 
     <div class="col-lg-4 col-md-4 pic-and-buttons" >
-      <img ng-src="{{ profile.user.image }}" alt="{{profile.user.username}}">
+      <img ng-src="{{ profile.user.image_src }}" alt="{{profile.user.username}}">
       <p>{{profile.user.name}}</p>
       <p>{{profile.user.email}}</p>
       <button class ="btn" ui-sref="profileEdit({id: main.profilePageId})">Edit profile</button>
