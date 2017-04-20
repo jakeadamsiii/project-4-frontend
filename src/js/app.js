@@ -1,7 +1,11 @@
+/* global Stripe */
 angular
   .module('fundraiser', ['ui.router', 'ngResource', 'satellizer', 'checklist-model', 'ui.bootstrap'])
   .constant('API_URL', 'http://localhost:3000/api')
-  .config(Auth);
+  .config(Auth)
+  .config(function() {
+    Stripe.setPublishableKey('pk_test_m1RHjWD7EruzI8afxdLra4v9');
+  });
 
   Auth.$inject = ['$authProvider', 'API_URL'];
   function Auth($authProvider, API_URL) {
