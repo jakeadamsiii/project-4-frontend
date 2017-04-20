@@ -15,15 +15,11 @@
     </div>
     <div class="col-lg-3 sidebar">
         <p>{{ projectsShow.project.end_date}}</p>
-        <p>£{{ projectsShow.project.target_amount}}</p>
+        <p>Target amount: £{{ projectsShow.project.target_amount}}</p>
+        <p>Currently donated: £{{projectsShow.project.current_amount}}</p>
         <a href="#" ng-click="projectsShow.delete()">Delete</a>
         <a ui-sref="projectsEdit({ id: projectsShow.project.id})">Edit</a>
-        <div class="buttons">
-            <button type="button" id="£1">Donate £1</button>
-            <button type="button" id="£5">Donate £5</button>
-            <button type="button" id="£10">Donate £10</button>
-            <a ui-sref="payment({id: projectsShow.project.id})" class="btn" >Donate</a>
-        </div>
+        <a ui-sref="payment({id: projectsShow.project.id})" class="btn" >Donate</a>
     </div>
     <div class="col-lg-12">
   <div class="bar-border">
@@ -31,7 +27,7 @@
   </div>
   <div id="moving-amount">
       <p>^<br>
-      £<span id="donations">0</span></p>
+      £{{projectsShow.project.current_amount}}</p>
   </div>
 </div>
   </div>

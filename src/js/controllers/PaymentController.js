@@ -2,14 +2,14 @@ angular
 .module('fundraiser')
 .controller('PaymentController', PaymentController);
 
-
-PaymentController.$inject = ['API_URL', '$http', '$window', '$state', '$stateParams', 'Project'];
-function PaymentController(API_URL, $http, $window, $state, $stateParams, Project) {
+PaymentController.$inject = ['API_URL', '$http', '$window', '$state', '$stateParams', 'Project', 'Donation', 'User', '$uibModal'];
+function PaymentController(API_URL, $http, $window, $state, $stateParams, Project, Donation, User, $uibModal) {
   const vm = this;
   let requester;
   const Stripe = $window.Stripe;
 
   vm.card = {};
+  vm.donation ={};
   vm.currency = 'gbp';
   vm.paymentSuccessful = false;
 
@@ -33,17 +33,6 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Projec
         });
   }
 
-  // function removePayedRequest(){
-  //   request.paid = true;
-  //   request.accepted = true;
-  //   Request
-  //   .delete({id: request.id})
-  //   .$promise
-  //   .then(()=>{
-  //     $state.go('profile', {id: requester});
-  //   });
-  // }
-
   vm.pay = function pay() {
     const tokenData = angular.copy(vm.card);
     delete tokenData.amount;
@@ -56,6 +45,7 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Projec
         currency: vm.currency
       };
       paymentTransaction(data);
+      createDonation();
     });
   };
 
@@ -73,11 +63,20 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Projec
   .catch(next);
 }
 
-  vm.reset = function() {
-    vm.card = {};
-    vm.payee = '';
-    vm.amount = null;
-    vm.paymentSuccessful = false;
-    vm.Form.$setPristine(true);
-  };
+  // vm.reset = function() {
+  //   vm.card = {};
+  //   vm.payee = '';
+  //   vm.amount = null;
+  //   vm.paymentSuccessful = false;
+  //   vm.Form.$setPristine(true);
+  // };
+
+  function createDonation(){
+    vm.donation.project_id = $stateParams.id;
+    vm.donation.amount = vm.card.amount;
+    Donation
+    .save(vm.donation)
+    .$promise
+    .then(()=> $state.go('projectsIndex'));
+  }
 }

@@ -74,6 +74,14 @@ Project
   .$promise
   .then(response =>{
     vm.project = response;
+    determineWidth();
+
+    function determineWidth(){
+      const widthPercent = Math.floor((vm.project.current_amount/vm.project.target_amount)*100);
+      document.getElementById("bar").style.width = `${widthPercent}%`;
+      document.getElementById("moving-amount").style.left = `${widthPercent}%`;
+      }
+
   });
 
 vm.delete = projectsDelete;
@@ -84,6 +92,7 @@ vm.delete = projectsDelete;
       .$remove()
       .then(() => $state.go('projectsIndex'));
   }
+
 }
 
 
