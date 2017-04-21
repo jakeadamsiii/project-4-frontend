@@ -11,24 +11,26 @@
     </div>
       <div class="row showmid">
     <div class="col-lg-9">
-      <iframe src="https://www.youtube.com/embed/XGSy3_Czz8k?playlist=XGSy3_Czz8k&loop=1"> </iframe>
+      <youtube video-id="projectsShow.project.video" ng-if="projectsShow.project.$resolved"></youtube>
     </div>
     <div class="col-lg-3 sidebar">
         <p>{{ projectsShow.project.end_date}}</p>
         <p>Target amount: £{{ projectsShow.project.target_amount}}</p>
         <p>Currently donated: £{{projectsShow.project.current_amount}}</p>
+
         <a href="#" ng-click="projectsShow.delete()">Delete</a>
-        <a ui-sref="projectsEdit({ id: projectsShow.project.id})">Edit</a>
-        <a ui-sref="payment({id: projectsShow.project.id})" class="btn" >Donate</a>
+        <a ng-if="main.isAuthenticated()" ui-sref="projectsEdit({ id: projectsShow.project.id})">Edit</a>
+
+        <a ng-if="main.isAuthenticated()" ui-sref="payment({id: projectsShow.project.id})" class="btn" >Donate</a>
     </div>
     <div class="col-lg-12">
   <div class="bar-border">
     <div id="bar"></div>
   </div>
-  <div id="moving-amount">
+  <!-- <div id="moving-amount">
       <p>^<br>
       £{{projectsShow.project.current_amount}}</p>
-  </div>
+  </div> -->
 </div>
   </div>
   <div class="brief col-lg-12">

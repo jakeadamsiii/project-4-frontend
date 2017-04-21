@@ -9,4 +9,22 @@
       <button class ="btn del" ng-click="profile.delete()">Delete Profile</button>
     </div>
 
+    <div class="projects">
+        <h3>Projects</h3>
+        <ul>
+          <li ng-if="project.user.id === profile.user.id" ng-repeat="project in profile.projects">
+            {{project.title}}
+          </li>
+        </ul>
+    </div>
+
+    <div class="donations">
+        <h3>Donations</h3>
+        <ul>
+          <li ng-if="donation.user.id === profile.user.id" ng-repeat="donation in profile.donations">
+            {{donation.project.title}} - £{{donation.amount}}
+          </li>
+        </ul>
+    </div>
+
 </div>

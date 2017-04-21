@@ -10,7 +10,7 @@
       <a ui-sref="projectsShow({ id: project.id })">
     <img ng-src="{{project.image_src}}">
     <h3>{{ project.title }}</h3></a>
-      <p>0% funded</p>
+      <p>{{project.percent}}% funded</p>
       <p>Target: £{{project.target_amount}}</p>
       <p>end date: {{project.end_date}}</p>
     </div>

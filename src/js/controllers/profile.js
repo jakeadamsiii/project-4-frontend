@@ -4,23 +4,12 @@ angular
   .controller('ProfileCtrl', ProfileCtrl)
   .controller('EditCtrl', EditCtrl);
 
-ProfileCtrl.$inject = ['User','$stateParams', '$http', '$state', '$auth'];
-function ProfileCtrl(User, $stateParams, $http, $state, $auth){
+ProfileCtrl.$inject = ['User', 'Project', 'Donation', '$stateParams', '$http', '$state', '$auth'];
+function ProfileCtrl(User, Project, Donation, $stateParams, $http, $state, $auth){
   const vm = this;
+  vm.projects = Project.query();
+  vm.donations = Donation.query();
 
-  // vm.allUserItems = [];
-  //
-  // function getUsersItems(){
-  //   Item.query()
-  //   .$promise
-  //   .then((items)=>{
-  //     items.forEach((item)=>{
-  //       if(item.createdBy.id === vm.user.id){
-  //         vm.allUserItems.push(item);
-  //       }
-  //     });
-  //   });
-  // }
 
 //defines all functions that is going be interact directly with the UI
 // Grabs Request info from back end

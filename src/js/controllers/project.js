@@ -33,16 +33,17 @@ function ProjectsIndexCtrl(Project, Category, filterFilter, orderByFilter, $scop
   ],filterProjects);
 }
 
-ProjectsNewCtrl.$inject = ['Project', 'Category', 'User', '$state', '$uibModal'];
-function ProjectsNewCtrl(Project, Category, User, $state, $uibModal) {
+ProjectsNewCtrl.$inject = ['Project', 'Category', 'User', '$state', '$uibModal', 'youtubeService'];
+function ProjectsNewCtrl(Project, Category, User, $state, $uibModal, youtubeService) {
   const vm = this;
   vm.project = {};
   vm.users = User.query();
   vm.categories = Category.query();
 
   function submit(){
+    vm.project.video = youtubeService.getCode(vm.project.video);
     Project
-    .save(vm.project)
+    .save({ project: vm.project })
     .$promise
     .then(()=> $state.go('projectsIndex'));
   }
@@ -50,41 +51,45 @@ function ProjectsNewCtrl(Project, Category, User, $state, $uibModal) {
   vm.submit = submit;
 
   function openModal() {
-  $uibModal.open({
-    templateUrl: 'js/views/partials/newModal.html',
-    controller: 'ProjectsNewCtrl as projectsNew'
-  });
+    $uibModal.open({
+      templateUrl: 'js/views/partials/newModal.html',
+      controller: 'ProjectsNewCtrl as projectsNew'
+    });
   }
 
-vm.open = openModal;
+  vm.open = openModal;
 
-function closeModal() {
-  $uibModalInstance.close();
+  function closeModal() {
+    $uibModalInstance.close();
+  }
+
+  vm.close = closeModal;
 }
 
-vm.close = closeModal;
-}
+ProjectsShowCtrl.$inject = ['Project', 'User', '$state','$stateParams'];
+function ProjectsShowCtrl(Project, User, $state, $stateParams) {
+  const vm = this;
+  vm.users = User.query();
 
-ProjectsShowCtrl.$inject = ['Project', '$state','$stateParams'];
-function ProjectsShowCtrl(Project, $state, $stateParams) {
-const vm = this;
+  Project
+    .get($stateParams)
+    .$promise
+    .then(response =>{
+      vm.project = response;
+      determineWidth();
 
-Project
-  .get($stateParams)
-  .$promise
-  .then(response =>{
-    vm.project = response;
-    determineWidth();
+      function determineWidth(){
+        let widthPercent = Math.floor((vm.project.current_amount/vm.project.target_amount)*100);
+        if (widthPercent >= 100){
+          widthPercent = 100;
+        }
+        document.getElementById("bar").style.width = `${widthPercent}%`;
+        // document.getElementById("moving-amount").style.left = `${widthPercent}%`;
+        }
 
-    function determineWidth(){
-      const widthPercent = Math.floor((vm.project.current_amount/vm.project.target_amount)*100);
-      document.getElementById("bar").style.width = `${widthPercent}%`;
-      document.getElementById("moving-amount").style.left = `${widthPercent}%`;
-      }
+    });
 
-  });
-
-vm.delete = projectsDelete;
+  vm.delete = projectsDelete;
 
   function projectsDelete() {
     console.log('cool');
