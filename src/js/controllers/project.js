@@ -9,28 +9,36 @@ ProjectsIndexCtrl.$inject = ['Project', 'Category', 'filterFilter', 'orderByFilt
 function ProjectsIndexCtrl(Project, Category, filterFilter, orderByFilter, $scope){
   const vm = this;
 
-  vm.all = Project.query();
+  vm.all = [];
+
+  function getProjects() {
+    Project
+      .query()
+      .$promise
+      .then((projects) => {
+        vm.all = projects;
+        filterItem();
+      });
+  }
+  getProjects();
+
+  vm.category = '';
   vm.categories = Category.query();
 
-    function filterProjects() {
-      const params =  { title: vm.q };
-      vm.filtered = filterFilter(vm.all, vm.q, params);
-
-      if(vm.category) params.category = vm.category;
-    }
-
-  // function filterProjects(){
-  //   const params =  { title: vm.q };
-  //   if(vm.catagory) params.catagory = vm.catagory;
-  //   vm.filtered = filterFilter(vm.all, params);
-  //   vm.filtered = orderByFilter(vm.filtered, vm.sort);
-  // }
+  function filterItem() {
+    const params = { title: vm.q };
+    vm.filtered = filterFilter(vm.all, params);
+    vm.filtered = filterFilter(vm.filtered, { category:  { id: vm.category } });
+  }
 
   $scope.$watchGroup([
-    ()=> vm.catagory,
-    ()=> vm.q
-    // ()=> vm.sort
-  ],filterProjects);
+    () => vm.q,
+    () => vm.all.$resolved,
+    () => vm.category
+  ], filterItem);
+
+  filterItem();
+
 }
 
 ProjectsNewCtrl.$inject = ['Project', 'Category', 'User', '$state', '$uibModal', 'youtubeService'];
@@ -117,15 +125,13 @@ function ProjectsEditCtrl(Project, Category, $stateParams, $state) {
 
   function projectsUpdate() {
     console.log(vm.project);
-    // The vm.project gives us the full object user so I had to reassign the createdBy to an single Object.id inorder for the form to work because it only takes a Singledatavalue
-    // vm.project.createdBy = vm.project.createdBy.id;
 
     Project
-      .update({id: vm.project.id, project: vm.project })
-      .$promise
-      .then((project) => $state.go('projectsShow', { id: vm.project.id }));
-
+      .update({ id: vm.project.id, project: vm.project })
+        .$promise
+        .then(() => $state.go('projectsShow', $stateParams));
   }
 
   vm.update = projectsUpdate;
+
 }

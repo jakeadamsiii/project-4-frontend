@@ -2,15 +2,30 @@
 <section>
 <h1>Register</h1>
 
-    <form ng-submit="login.register()">
+    <form name="login.registerForm" ng-submit="login.register()" novalidate>
+
+        <div ng-messages="login.registerForm.name.$error" role="alert" ng-show="(login.registerForm.name.$touched)&&(login.registerForm.name.$invalid) ">
+          <div ng-message="required">Name is required</div>
+        </div>
+        <div ng-show="login.registerForm.email.$touched &&(login.registerForm.email.$invalid)" ng-messages="login.registerForm.email.$error" role="alert">
+          <div ng-message="required">Email is required </div>
+          <div ng-message="pattern">Please enter a valid email.</div>
+        </div>
+        <div ng-messages="login.registerForm.password.$error" role="alert" ng-show="(login.registerForm.password.$touched) &&(login.registerForm.password.$invalid)">
+          <div ng-message="required">Password is required </div>
+        </div>
+        <div ng-messages="login.registerForm.password_confirmation.$error" role="alert" ng-show="(login.registerForm.password_confirmation.$touched) &&(login.registerForm.password_confirmation.$invalid)">
+          <div ng-message="required">Password confirmation is required </div>
+        </div>
       <div>
-        <label>Username</label>
-        <input type="text" ng-model="login.user.name">
+        
+        <label>Name</label>
+        <input type="text" name="name" ng-model="login.user.name" required>
       </div>
 
       <div>
         <label>Email</label>
-        <input type="text" ng-model="login.user.email">
+        <input type="text" name="email" ng-model="login.user.email" ng-pattern="/@/" required>
       </div>
 
       <div class="form-group">
@@ -20,12 +35,12 @@
 
       <div>
         <label>Password</label>
-        <input type="password" ng-model="login.user.password">
+        <input type="password" name="password" ng-model="login.user.password" required>
       </div>
 
       <div>
         <label>Password Confirmation</label>
-        <input type="password" ng-model="login.user.password_confirmation">
+        <input type="password" name="password_confirmation" ng-model="login.user.password_confirmation" required>
       </div>
 
       <button>Register</button>

@@ -18,8 +18,8 @@
         <p>Target amount: £{{ projectsShow.project.target_amount}}</p>
         <p>Currently donated: £{{projectsShow.project.current_amount}}</p>
 
-        <a href="#" ng-click="projectsShow.delete()">Delete</a>
-        <a ng-if="main.isAuthenticated()" ui-sref="projectsEdit({ id: projectsShow.project.id})">Edit</a>
+        <a ng-if="main.isAuthenticated()&& projectsShow.project.user.id === main.currentUser.id" href="#" ng-click="projectsShow.delete()">Delete</a>
+        <a ng-if="main.isAuthenticated()&& projectsShow.project.user.id === main.currentUser.id" ui-sref="projectsEdit({ id: projectsShow.project.id})">Edit</a>
 
         <a ng-if="main.isAuthenticated()" ui-sref="payment({id: projectsShow.project.id})" class="btn" >Donate</a>
     </div>

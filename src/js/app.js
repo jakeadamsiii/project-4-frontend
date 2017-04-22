@@ -1,6 +1,6 @@
 /* global Stripe */
 angular
-  .module('fundraiser', ['ui.router', 'ngResource', 'satellizer', 'checklist-model', 'ui.bootstrap'])
+  .module('fundraiser', ['ui.router', 'ngResource', 'satellizer', 'checklist-model', 'ui.bootstrap', 'ngMessages'])
   .constant('API_URL', 'http://localhost:3000/api')
   .config(Auth)
   .config(WhitelistSrc)

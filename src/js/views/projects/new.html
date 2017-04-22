@@ -1,16 +1,29 @@
-<div class="form">
+<div class="form form-style-8">
 
-  <h3>New project:</h3>
-  <form ng-submit="projectsNew.submit()">
+  <h3>New project</h3>
+  <form name="projectsNew.newForm"  ng-submit="projectsNew.submit()" novalidate>
+
+    <div ng-messages="projectsNew.newForm.title.$error" role="alert" ng-show="(projectsNew.newForm.title.$touched)&&(projectsNew.newForm.title.$invalid) ">
+      <div ng-message="required">Title is required </div>
+    </div>
+    <div ng-show="projectsNew.newForm.brief.$touched &&(projectsNew.newForm.brief.$invalid)" ng-messages="projectsNew.newForm.brief.$error" role="alert">
+      <div ng-message="required">Brief is required </div>
+    </div>
+    <div ng-messages="projectsNew.newForm.target_amount.$error" role="alert" ng-show="(projectsNew.newForm.target_amount.$touched) &&(projectsNew.newForm.target_amount.$invalid)">
+      <div ng-message="required">Target amount is required </div>
+    </div>
+    <div ng-messages="projectsNew.newForm.end_date.$error" role="alert" ng-show="(projectsNew.newForm.end_date.$touched) &&(projectsNew.newForm.end_date.$invalid)">
+      <div ng-message="required">End date is required </div>
+    </div>
 
       <div>
         <label>Title</label>
-        <input type="text" ng-model="projectsNew.project.title">
+        <input type="text" name="title" ng-model="projectsNew.project.title" required>
       </div>
 
       <div>
         <label>Brief</label>
-        <textarea type="text" ng-model="projectsNew.project.brief"></textarea>
+        <textarea type="text" name="brief" ng-model="projectsNew.project.brief" required></textarea>
       </div>
 
       <div class="form-group">
@@ -25,13 +38,14 @@
       </div>
 
       <div>
-        <label>Amount</label>
-        <input type="number" ng-model="projectsNew.project.target_amount">
+        <label>Target amount</label>
+        <input type="number" name="target_amount" ng-model="projectsNew.project.target_amount" required>
       </div>
+
 
       <div>
         <label>Category</label>
-        <select ng-model="projectsNew.project.category.id">
+        <select ng-model="projectsNew.project.category_id">
           <option disabled selected>Please select</option>
           <option ng-repeat="category in projectsNew.categories" ng-value="{{category.id}}">{{category.name}}</option>
         </select>
@@ -39,7 +53,7 @@
 
       <div>
         <label>End date</label>
-        <input type="date"  ng-model="projectsNew.project.end_date">
+        <input type="date" name="end_date"  ng-model="projectsNew.project.end_date" required>
       </div>
       <!-- {{horsesNew.users[0].name}}
       <div>

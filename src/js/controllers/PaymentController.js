@@ -13,6 +13,7 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Projec
   vm.currency = 'gbp';
   vm.paymentSuccessful = false;
 
+//get the correct project id
   Project
     .get($stateParams)
     .$promise
@@ -32,6 +33,7 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Projec
           }
         });
   }
+
 
   vm.pay = function pay() {
     const tokenData = angular.copy(vm.card);
@@ -62,14 +64,6 @@ function PaymentController(API_URL, $http, $window, $state, $stateParams, Projec
   })
   .catch(next);
 }
-
-  // vm.reset = function() {
-  //   vm.card = {};
-  //   vm.payee = '';
-  //   vm.amount = null;
-  //   vm.paymentSuccessful = false;
-  //   vm.Form.$setPristine(true);
-  // };
 
   function createDonation(){
     vm.donation.project_id = $stateParams.id;

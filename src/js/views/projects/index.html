@@ -24,10 +24,10 @@
       <input type="text" class="search" ng-model="projectsIndex.q" placeholder="Search...">
 
       <h5>Category</h5>
-      <select class="cata" ng-model="projectsIndex.category.id">
-            <option disabled selected>Please select</option>
-            <option ng-repeat="category in projectsIndex.categories" ng-value="{{category.id}}">{{category.name}}</option>
-          </select>
+      <select class="cata" ng-model="projectsIndex.category">
+        <option selected value="">All</option>
+        <option ng-repeat="category in projectsIndex.categories" ng-value="{{category.id}}">{{category.name}}</option>
+      </select>
     </aside>
   </div>
 </section>

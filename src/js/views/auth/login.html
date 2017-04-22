@@ -1,13 +1,23 @@
 <h1>Login</h1>
-<form ng-submit="login.login()">
+<form ng-submit="login.login()" name="login.loginForm" novalidate>
+
+      <div ng-show="login.loginForm.email.$touched &&(login.loginForm.email.$invalid)" ng-messages="login.loginForm.email.$error" role="alert">
+        <div ng-message="required">Email is required </div>
+        <div ng-message="pattern">Please enter a valid email.</div>
+      </div>
+
+      <div ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.password.$touched)&&(login.loginForm.password.$invalid) ">
+        <div ng-message="required">Password is required</div>
+      </div>
+
   <div>
     <label>Email</label>
-    <input type="text" ng-model="login.credentials.email">
+    <input type="text" name="email" ng-model="login.credentials.email" required pattern="/@/">
   </div>
 
   <div>
     <label>Password</label>
-    <input type="password" ng-model="login.credentials.password">
+    <input type="password" name="password" ng-model="login.credentials.password" required>
   </div>
 
   <button>Login</button>
