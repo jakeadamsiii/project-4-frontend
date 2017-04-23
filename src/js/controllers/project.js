@@ -18,6 +18,7 @@ function ProjectsIndexCtrl(Project, Category, filterFilter, orderByFilter, $scop
       .then((projects) => {
         vm.all = projects;
         filterItem();
+        determineWidth();
       });
   }
   getProjects();
@@ -38,6 +39,15 @@ function ProjectsIndexCtrl(Project, Category, filterFilter, orderByFilter, $scop
   ], filterItem);
 
   filterItem();
+
+  function determineWidth(){
+    let widthPercent = Math.floor((vm.project.current_amount/vm.project.target_amount)*100);
+    if (widthPercent >= 100){
+      widthPercent = 100;
+    }
+    document.getElementById("bar").style.width = `${widthPercent}%`;
+    // document.getElementById("moving-amount").style.left = `${widthPercent}%`;
+    }
 
 }
 
