@@ -3,7 +3,7 @@
   <h3>New project</h3>
   <div class="form-style-4">
 
-  <form  name="projectsNew.newForm"  ng-submit="projectsNew.submit()" novalidate>
+  <form class="form-inline" name="projectsNew.newForm"  novalidate>
 
     <div ng-messages="projectsNew.newForm.title.$error" role="alert" ng-show="(projectsNew.newForm.title.$touched)&&(projectsNew.newForm.title.$invalid) ">
       <div class="error" ng-message="required">Title is required </div>
@@ -15,15 +15,15 @@
       <div class="error" ng-message="required">Target amount is required </div>
     </div>
     <div ng-messages="projectsNew.newForm.end_date.$error" role="alert" ng-show="(projectsNew.newForm.end_date.$touched) &&(projectsNew.newForm.end_date.$invalid)">
-      <div class="error" ng-message="required">End date is required </div>
+      <div class="error"ng-message="required">End date is required </div>
     </div>
 
-      <div>
+      <div class="form-group">
         <span>Title</span>
         <input type="text" name="title" ng-model="projectsNew.project.title" required>
       </div>
 
-      <div>
+      <div class="form-group">
         <span>Brief</span>
         <textarea type="text" name="brief" ng-model="projectsNew.project.brief" required></textarea>
       </div>
@@ -39,13 +39,13 @@
         <small>eg: https://youtube/EyiiwNHAC8M</small>
       </div>
 
-      <div>
+      <div class="form-group">
         <span>Target amount</span>
         <input type="number" name="target_amount" ng-model="projectsNew.project.target_amount" required>
       </div>
 
 
-      <div>
+      <div class="form-group">
         <span>Category</span>
         <select ng-model="projectsNew.project.category_id">
           <option disabled selected>Please select</option>
@@ -53,7 +53,7 @@
         </select>
       </div>
 
-      <div>
+      <div class="form-group">
         <span>End date</span>
         <input type="date" name="end_date"  ng-model="projectsNew.project.end_date" required>
       </div>
@@ -67,8 +67,9 @@
         </select>
       </div> -->
 
-      <button>Submit</button>
+      <button ng-click="projectsNew.submit()" class="butt btn-2 btn-1g" >Submit</button>
+        <button ng-click="projectsNew.open()" class="butt btn-2 btn-1g">Info</button>
   </form>
-  <button ng-click="projectsNew.open()" class="btn btn-danger">Info</button>
+
   </div>
 </div>

@@ -1,31 +1,34 @@
-<div class="form">
+<div class="form-wrapper">
 
 
-<h1>Login</h1>
-<form ng-submit="login.login()" name="login.loginForm" novalidate>
+<h3>Login</h3>
+<div class="form-style-4">
+
+<form class="form-inline" ng-submit="login.login()" name="login.loginForm" novalidate>
 
       <div ng-show="login.loginForm.email.$touched &&(login.loginForm.email.$invalid)" ng-messages="login.loginForm.email.$error" role="alert">
-        <div ng-message="required">Email is required </div>
-        <div ng-message="pattern">Please enter a valid email.</div>
+        <div class="error" ng-message="required">Email is required </div>
+        <div class="error" ng-message="pattern">Please enter a valid email.</div>
       </div>
 
       <div ng-messages="login.loginForm.password.$error" role="alert" ng-show="(login.loginForm.password.$touched)&&(login.loginForm.password.$invalid) ">
-        <div ng-message="required">Password is required</div>
+        <div class="error" ng-message="required">Password is required</div>
       </div>
 
   <div>
-    <label>Email</label>
-    <input type="text" name="email" ng-model="login.credentials.email" required pattern="/@/">
+    <span>Email</span>
+    <input class="form-group" type="text" name="email" ng-model="login.credentials.email" required pattern="/@/">
   </div>
 
   <div>
-    <label>Password</label>
-    <input type="password" name="password" ng-model="login.credentials.password" required>
+    <span>Password</span>
+    <input class="form-group" type="password" name="password" ng-model="login.credentials.password" required>
   </div>
 
-  <button>Login</button>
+  <button class="butt btn-2 btn-1g">Login</button>
 
 </form>
-  <button ng-click="login.authenticate('github')">Login with Github</button>
-  <button ng-click="login.authenticate('facebook')">Login with Facebook</button>
+  <button class="butt btn-5 btn-5a icon-github" ng-click="login.authenticate('github')"><span>Login with Github</span></button>
+  <button class="butt btn-5 btn-5a icon-facebook" ng-click="login.authenticate('facebook')"><span>Login with Facebook</span></button>
+</div>
 </div>

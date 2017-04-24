@@ -45,6 +45,7 @@ function ProjectsIndexCtrl(Project, Category, filterFilter, orderByFilter, $scop
     console.log(vm.all[i].percent);
     document.getElementsByClassName("bars").style.width = `${vm.all[i].percent}%`;
     }
+  
 
 }
 

@@ -1,48 +1,50 @@
 
-<section class="form">
-<h1>Register</h1>
+<section class="form-wrapper">
+<h3>Register</h3>
+<div class="form-style-4">
 
-    <form name="login.registerForm" ng-submit="login.register()" novalidate>
+    <form lass="form-inline" name="login.registerForm" ng-submit="login.register()" novalidate>
 
         <div ng-messages="login.registerForm.name.$error" role="alert" ng-show="(login.registerForm.name.$touched)&&(login.registerForm.name.$invalid) ">
-          <div ng-message="required">Name is required</div>
+          <div class="error" ng-message="required">Name is required</div>
         </div>
         <div ng-show="login.registerForm.email.$touched &&(login.registerForm.email.$invalid)" ng-messages="login.registerForm.email.$error" role="alert">
-          <div ng-message="required">Email is required </div>
-          <div ng-message="pattern">Please enter a valid email.</div>
+          <div class="error" ng-message="required">Email is required </div>
+          <div  class="error" ng-message="pattern">Please enter a valid email.</div>
         </div>
         <div ng-messages="login.registerForm.password.$error" role="alert" ng-show="(login.registerForm.password.$touched) &&(login.registerForm.password.$invalid)">
-          <div ng-message="required">Password is required </div>
+          <div class="error" ng-message="required">Password is required </div>
         </div>
         <div ng-messages="login.registerForm.password_confirmation.$error" role="alert" ng-show="(login.registerForm.password_confirmation.$touched) &&(login.registerForm.password_confirmation.$invalid)">
-          <div ng-message="required">Password confirmation is required </div>
+          <div class="error" ng-message="required">Password confirmation is required </div>
         </div>
-      <div>
 
-        <label>Name</label>
-        <input type="text" name="name" ng-model="login.user.name" required>
+      <div class="form-group">
+        <span>Name</span>
+        <input  type="text" name="name" ng-model="login.user.name" required>
       </div>
 
-      <div>
-        <label>Email</label>
+      <div class="form-group">
+        <span>Email</span>
         <input type="text" name="email" ng-model="login.user.email" ng-pattern="/@/" required>
       </div>
 
       <div class="form-group">
-        <label for="base64">Image</label>
+        <span for="base64">Image</span>
         <input type="file" base64 name="base64" id="base64" ng-model="login.user.base64">
       </div>
 
-      <div>
-        <label>Password</label>
+      <div class="form-group">
+        <span>Password</span>
         <input type="password" name="password" ng-model="login.user.password" required>
       </div>
 
-      <div>
-        <label>Password Confirmation</label>
+      <div class="form-group">
+        <span>Password Confirmation</span>
         <input type="password" name="password_confirmation" ng-model="login.user.password_confirmation" required>
       </div>
 
-      <button>Register</button>
+      <button  class="butt btn-2 btn-1g">Register</button>
     </form>
+  </div>
 </section>
