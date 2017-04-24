@@ -1,50 +1,52 @@
-<div class="form form-style-8">
+<div class="form-wrapper">
 
   <h3>New project</h3>
-  <form name="projectsNew.newForm"  ng-submit="projectsNew.submit()" novalidate>
+  <div class="form-style-4">
+
+  <form  name="projectsNew.newForm"  ng-submit="projectsNew.submit()" novalidate>
 
     <div ng-messages="projectsNew.newForm.title.$error" role="alert" ng-show="(projectsNew.newForm.title.$touched)&&(projectsNew.newForm.title.$invalid) ">
-      <div ng-message="required">Title is required </div>
+      <div class="error" ng-message="required">Title is required </div>
     </div>
     <div ng-show="projectsNew.newForm.brief.$touched &&(projectsNew.newForm.brief.$invalid)" ng-messages="projectsNew.newForm.brief.$error" role="alert">
-      <div ng-message="required">Brief is required </div>
+      <div class="error" ng-message="required">Brief is required </div>
     </div>
     <div ng-messages="projectsNew.newForm.target_amount.$error" role="alert" ng-show="(projectsNew.newForm.target_amount.$touched) &&(projectsNew.newForm.target_amount.$invalid)">
-      <div ng-message="required">Target amount is required </div>
+      <div class="error" ng-message="required">Target amount is required </div>
     </div>
     <div ng-messages="projectsNew.newForm.end_date.$error" role="alert" ng-show="(projectsNew.newForm.end_date.$touched) &&(projectsNew.newForm.end_date.$invalid)">
-      <div ng-message="required">End date is required </div>
+      <div class="error" ng-message="required">End date is required </div>
     </div>
 
       <div>
-        <label>Title</label>
+        <span>Title</span>
         <input type="text" name="title" ng-model="projectsNew.project.title" required>
       </div>
 
       <div>
-        <label>Brief</label>
+        <span>Brief</span>
         <textarea type="text" name="brief" ng-model="projectsNew.project.brief" required></textarea>
       </div>
 
       <div class="form-group">
-        <label for="base64">Image</label>
+        <span for="base64">Image</span>
         <input type="file" base64 name="base64" id="base64" ng-model="projectsNew.project.base64">
       </div>
 
       <div class="form-group">
-        <label for="video">Youtube Share Link</label>
+        <span for="video">Youtube Share Link</span>
         <input type="text" name="video" id="video" ng-model="projectsNew.project.video">
-        <small>eg: https://youtu.be/EyiiwNHAC8M</small>
+        <small>eg: https://youtube/EyiiwNHAC8M</small>
       </div>
 
       <div>
-        <label>Target amount</label>
+        <span>Target amount</span>
         <input type="number" name="target_amount" ng-model="projectsNew.project.target_amount" required>
       </div>
 
 
       <div>
-        <label>Category</label>
+        <span>Category</span>
         <select ng-model="projectsNew.project.category_id">
           <option disabled selected>Please select</option>
           <option ng-repeat="category in projectsNew.categories" ng-value="{{category.id}}">{{category.name}}</option>
@@ -52,12 +54,12 @@
       </div>
 
       <div>
-        <label>End date</label>
+        <span>End date</span>
         <input type="date" name="end_date"  ng-model="projectsNew.project.end_date" required>
       </div>
       <!-- {{horsesNew.users[0].name}}
       <div>
-        <label>Jocky</label>
+        <span>Jocky</span>
         <select ng-model="horsesNew.users">
           <option disabled selected >Please select</option>
           <option ng-repeat="users in horsesNew.users" ng-value="{{users.id}}"> {{users.name}}</option>
@@ -68,4 +70,5 @@
       <button>Submit</button>
   </form>
   <button ng-click="projectsNew.open()" class="btn btn-danger">Info</button>
+  </div>
 </div>

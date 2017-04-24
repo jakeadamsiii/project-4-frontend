@@ -65,43 +65,130 @@ nav {
 
 //========== Form styles ============
 
-input, select, label, textarea{
-  display:block;
-  width:100%;
-  line-height: 2.5;
-  border-radius: 5px;
-  font-size: 16px;
+// input, select, label, textarea{
+//   display:block;
+//   width:100%;
+//   line-height: 2.5;
+//   border-radius: 5px;
+//   font-size: 16px;
+// }
+//
+// select{
+//   height:40px;
+// }
+//
+// .form{
+//   text-transform: uppercase;
+//   width:70%;
+//   margin: 80px auto 0;
+//   padding: 40px 30px;
+//   border: 5px solid white;
+//   background-color: rgba(0,0,0,0.2);
+//   h2{
+//     text-align: center;
+//   }
+//   button{
+//     text-transform: uppercase;
+//     margin-top: 20px;
+//     width:100%;
+//     padding: 10px 0;
+//     color:white;
+//     background-color: #506C64;
+//     cursor: pointer;
+//     border: 2px solid white;
+//     border-radius: 2px;
+//     &:hover{
+//       color:black;
+//       background: #F0FDFA;
+//     }
+//   }
+// }
+.form-wrapper{
+  margin-left: 50px;
+  margin-bottom: 20px;
+  .error{
+    color: #d6927f;
+  }
 }
 
-select{
-  height:40px;
+
+.form-style-4{
+    width: 40%;
+    font-size: 16px;
+    background: white;
+    padding: 30px 30px 15px 30px;
+    border: 5px solid #d6927f;
+}
+.form-style-4 input[type=submit],
+.form-style-4 input[type=number],
+.form-style-4 input[type=button],
+.form-style-4 input[type=text],
+.form-style-4 input[type=email],
+.form-style-4 label
+{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    color: black;
+
+}
+.form-style-4 label {
+    display:block;
+    margin-bottom: 10px;
+}
+.form-style-4 label > span{
+    display: inline-block;
+    float: left;
+    width: 150px;
+}
+.form-style-4 input[type=text],
+.form-style-4 input[type=email],
+.form-style-4 input[type=number]
+{
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    outline: none;
+    padding-left: 15px;
+    font-style: italic;
+}
+.form-style-4 textarea{
+    font-style: italic;
+    padding: 0px 0px 0px 0px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px dashed #83A4C5;
+    width: 275px;
+    overflow: hidden;
+    resize:none;
+    height:20px;
 }
 
-.form{
-  text-transform: uppercase;
-  width:70%;
-  margin: 80px auto 0;
-  padding: 40px 30px;
-  border: 5px solid white;
-  background-color: rgba(0,0,0,0.2);
-  h2{
-    text-align: center;
-  }
-  button{
-    text-transform: uppercase;
-    margin-top: 20px;
-    width:100%;
-    padding: 10px 0;
-    color:white;
-    background-color: #506C64;
-    cursor: pointer;
-    border: 2px solid white;
-    border-radius: 2px;
-    &:hover{
-      color:black;
-      background: #F0FDFA;
-    }
-  }
+.form-style-4 textarea:focus,
+.form-style-4 input[type=text]:focus,
+.form-style-4 input[type=email]:focus,
+.form-style-4 input[type=email] :focus,
+.form-style-4 input[type=number]:focus
+{
+    border-bottom: 1px dashed #d6927f;
+}
+
+.form-style-4 input[type=submit],
+.form-style-4 input[type=button]{
+    background: #576E86;
+    border: none;
+    padding: 8px 10px 8px 10px;
+    border-radius: 5px;
+    color: #A8BACE;
+}
+.form-style-4 input[type=submit]:hover,
+.form-style-4 input[type=button]:hover{
+background: #394D61;
+}
+
+.form-style-4 select{
+  margin: 10px;
 }
 
 //====Landing page styles =======
@@ -263,6 +350,16 @@ main{
   z-index: 2;
 }
 
+.bars{
+  // border-right:2px solid black;
+  // border-top-left-radius: 10px;
+  // border-bottom-left-radius: 10px;
+  height:16px;
+  background-color:grey;
+  width: 0;
+  z-index: 2;
+}
+
 // ==================== Project index =========================
 .index{
   padding-bottom: 8%;
@@ -298,7 +395,176 @@ main{
     }
   }
 }
+//================== profile page======================
 
+.profile{
+   padding-bottom: 10%;
+  img{
+  height:320px;
+  width:320px;
+  padding: 10px;
+  border: 1px solid black;
+  }
+  .info{
+    p{
+      padding-left: 20px;
+      span{
+        color: #d6927f;
+      }
+      font-size: 30px;
+      font-family: 'Dosis', sans-serif;
+    }
+    color:white;
+    height:200px;
+    width:100%;
+    background: grey;
+    button{
+      margin-top: 0;
+      margin-left: 20px;
+    }
+  }
+  ul{
+    list-style: none;
+    padding: 0;
+    li{
+      padding: 5px;
+      font-size: 20px;
+      border-bottom: 1px solid black;
+      a{
+        color:black;
+        &:hover{
+          color: #d6927f;
+        }
+      }
+    }
+  }
+  .head{
+    width:105%;
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 3px;
+    font-size: 30px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #d6927f;
+  }
+  .head1{
+      width: 120%;
+  }
+}
+//===================== button styles =======================
+
+.butt {
+  z-index: 11;
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 3% 10%;
+	display: inline-block;
+	margin: 3% 5%;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.butt:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+/* Pseudo elements for icons */
+.butt:before {
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+}
+
+.btn-1 {
+	border: 3px solid #fff;
+	color: #fff;
+}
+
+.btn-1e {
+	overflow: hidden;
+}
+
+.btn-1e:after {
+	width: 100%;
+	height: 0;
+	top: 50%;
+	left: 50%;
+	background: #fff;
+	opacity: 0;
+	-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	-moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	-ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+.btn-1e:hover,
+.btn-1e:active {
+	color: #d6927f;
+}
+
+.btn-1e:hover:after {
+	height: 260%;
+	opacity: 1;
+}
+
+.btn-1e:active:after {
+	height: 400%;
+	opacity: 1;
+}
+
+
+.btn-1f {
+	overflow: hidden;
+}
+
+.btn-1f:after {
+	width: 100%;
+	height: 0;
+	top: 50%;
+	left: 50%;
+	background: #fff;
+	opacity: 0;
+	-webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	-moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	-ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+
+.btn-1f:hover,
+.btn-1f:active {
+	color: #d6927f;
+}
+
+.btn-1f:hover:after {
+	height: 260%;
+	opacity: 1;
+}
+
+.btn-1f:active:after {
+	height: 400%;
+	opacity: 1;
+}
+
+//==============footer=======================
 div.footer{
   z-index:5;
   background-color: rgba(20,20,20,0.6);
@@ -340,6 +606,7 @@ div.footer{
 @media only screen and (max-width: 768px) {
   nav{
     z-index: 305;
+    background: lightgrey;
     ul {
       padding: 0 20px !important;
       .dropdown {
@@ -354,6 +621,7 @@ div.footer{
         &.open {
           display: block;
           z-index: 305;
+          border-bottom: 1px solid #d6927f;
         }
       }
       li {
@@ -368,4 +636,36 @@ div.footer{
       }
     }
   }
+}
+
+
+@media only screen and (max-width: 1040px) {
+  .profile{
+    img{
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+    }
+    .info{
+      margin-top: 350px;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 990px) {
+.profile{
+  .head{
+    width:100%;
+  }
+}
+}
+
+@media only screen and (max-width: 660px) {
+  .profile{
+    .info{
+      height:50%;
+    }
+  }
+
 }

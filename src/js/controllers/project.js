@@ -41,12 +41,9 @@ function ProjectsIndexCtrl(Project, Category, filterFilter, orderByFilter, $scop
   filterItem();
 
   function determineWidth(){
-    let widthPercent = Math.floor((vm.project.current_amount/vm.project.target_amount)*100);
-    if (widthPercent >= 100){
-      widthPercent = 100;
-    }
-    document.getElementById("bar").style.width = `${widthPercent}%`;
-    // document.getElementById("moving-amount").style.left = `${widthPercent}%`;
+    for(var i =0; i< vm.all.length; i++)
+    console.log(vm.all[i].percent);
+    document.getElementsByClassName("bars").style.width = `${vm.all[i].percent}%`;
     }
 
 }
