@@ -1,29 +1,31 @@
 <div class="container">
+
 <section class="show">
   <div class="row topshow">
-    <div class="col-lg-2">
-        <img ng-src="{{projectsShow.project.user.image_src}}">
+    <div class="col-lg-2 col-md-2">
+        <div ng-style="{'background-image': 'url(' + projectsShow.project.user.image_src + ')'}" class="user-image"></div>
         <p>{{ projectsShow.project.user.name }}</p>
     </div>
-    <div class="col-lg-10">
+    <div class="col-lg-10 col-md-10">
         <h1>{{ projectsShow.project.title }}</h1>
     </div>
     </div>
       <div class="row showmid">
-    <div class="col-lg-9">
+    <div class="col-lg-9 col-md-9">
       <youtube video-id="projectsShow.project.video" ng-if="projectsShow.project.$resolved"></youtube>
     </div>
-    <div class="col-lg-3 sidebar">
-        <p>{{ projectsShow.project.end_date}}</p>
+    <div class="col-lg-3 col-md-3 sidebar">
+        <!-- <p>{{ projectsShow.project.end_date}}</p> -->
         <p>Target amount: £{{ projectsShow.project.target_amount}}</p>
         <p>Currently donated: £{{projectsShow.project.current_amount}}</p>
+        <p>Days remaining:  {{projectsShow.project.days_to}}</p>
 
-        <a ng-if="main.isAuthenticated()&& projectsShow.project.user.id === main.currentUser.id" href="#" ng-click="projectsShow.delete()">Delete</a>
-        <a ng-if="main.isAuthenticated()&& projectsShow.project.user.id === main.currentUser.id" ui-sref="projectsEdit({ id: projectsShow.project.id})">Edit</a>
+        <a class="butt btn-1 btn-1e" ng-if="main.isAuthenticated()&& projectsShow.project.user.id === main.currentUser.id" href="#" ng-click="projectsShow.delete()">Delete</a>
+        <a class="butt btn-1 btn-1f" ng-if="main.isAuthenticated()&& projectsShow.project.user.id === main.currentUser.id" ui-sref="projectsEdit({ id: projectsShow.project.id})">Edit</a>
 
-        <a ng-if="main.isAuthenticated()" ui-sref="payment({id: projectsShow.project.id})" class="btn" >Donate</a>
+        <a class="butt btn-1 btn-1g" ng-if="main.isAuthenticated()" ui-sref="payment({id: projectsShow.project.id})" >Donate</a>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12 col-md-12">
   <div class="bar-border">
     <div id="bar"></div>
   </div>

@@ -1,64 +1,27 @@
-### Using this Angular Gulp Setup
+Donative charity fundraising app
 
-To get setup with the starter-code, you first need to run:
+To fork and run this app, please bower i, run rails s in the backend and run gulp in the fronted.
 
-```sh
-$ bower install && gulp install
-```
+###Overview
 
-## How is gulp setup?
+The aim of the project was build RESTful application of our choosing with a Ruby on Rails backend and an AngularJS frontend. I chose to build a crowdfunding platform, specialising in green charities. The main features of the project were that it had to be user authenticated, have secure routes, and a user could create, edit and delete their profile. The user and projects models had a has many and belongs to relationship. There was also a donation model built for the feature of donating to other users projects. The last feature was that a user could embed a youtube video into their project so that other.
 
-Rather than trying to manage one giant `gulpfile.js` that is file responsible for creating multiple tasks, each task has been broken out into its own file and placed in a directory `tasks`. Any files in that directory get automatically required in the gulpfile using the `require-dir` npm package.
+###Technology used
 
-To add a new task, simply add a new task file that directory.
+Ruby on Rails
+AngularJS
+HTML5
+SCSS
+heroku
+Stripe API
+git
 
-/tasks/default.js specifies the default set of tasks to run
-when you run `gulp`.
+###Evaluation
 
-Configuration options are stored in the `package.json` file.
+In evaluation of the project. It was liberating to have complete free reign over the direction and idea of the project. Although this sometimes meant that one had to be conscious of where the project was at all time and had to be rigorous in hitting deadline. Pair coding in a project like this could have been hugely beneficial as when running in to obstacles they often took longer to deal with than when working in a group. But overall a great experience building a full scale application from the ground up using two separate languages, to then be presented with a good long and well functioning product.
 
-When deploying, ensure that a `postinstall` script has been added to
-your package.json, e.g.
+##Challenges
+A major challenge was to implement the stripe API with the ruby backend, and finding a way to correctly embed the Youtube videos into the project show pages. The Youtube videos required a directive as to properly render on the page.
 
-```json
-"postinstall": "bower install && gulp deploy"
-```
-
-This setup expects that there is a bower.json file with at least ONE package
-installed. This will created a bower_components directory after
-the postinstall script has run.
-
-When deploying, this setup expects that the NODE_ENV is set to `production`.
-Also that the NPM_CONFIG_PRODUCTION is set to `false`. Then you can also set the API_URL to be the correct URL for your deployed app. This will automatically replace `http://localhost:4000` to be the correct url.
-
-You can do this by running:
-
-```bash
-$ heroku config:set NODE_ENV=production
-$ heroku config:set NPM_CONFIG_PRODUCTION=false
-
-# An example url
-$ heroku config:set API_URL=https://project-on-heroku.herokuapp.com/
-```
-
-### Bower overrides
-
-Sometimes, you might want to `override` the `main` file(s) for a specific Bower component. You can do this directly inside the `bower.json` file like this:
-
-```json
-"overrides": {
-  "bootstrap": {
-    "main": [
-      "dist/css/bootstrap.css",
-      "dist/js/bootstrap.js",
-      "dist/fonts/*"
-    ]
-  },
-  "font-awesome": {
-    "main": [
-      "css/font-awesome.css",
-      "fonts/*"
-    ]
-  }
-},
-```
+##Future additions
+I would liked to have had perks or bonuses associated with users that donate a certain amount to a project, similar to kickstarter and indiegogo. These perks would have had to be added to the project model, on donation the amount would need to be determined and the users information then pushed correctly into a predetermined array. Users will then be able to see how many backers there are at each level.  

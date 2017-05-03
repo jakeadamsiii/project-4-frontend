@@ -2,10 +2,9 @@
 
 <section class="index">
 
-<h3> List of Projects: </h3>
 <div class="row">
-
-<div class="col-lg-9 col-md-9">
+<h2 class="offset-lg-2"> List of Projects </h2>
+<div class="background col-lg-9 col-md-9">
 <ul>
   <li class="col-lg-4 col-md-4" ng-repeat="project in projectsIndex.filtered">
     <div class="proj">
@@ -14,18 +13,22 @@
       <h3>{{ project.title }}</h3></a>
       <span>{{project.category.name}}</span>
       <p>Target: £{{project.target_amount}}</p>
+
+
+      <div class="bar-and-stuff">
+
       <div class="col-lg-12">
-    <div class="bar-border">
-      <div class="bars"></div>
-    </div>
-    </div>
+        <div class="bar-border">
+          <div class="bars" ng-style="{ width: project.percent + '%' }"></div>
+        </div>
+      </div>
     <div class="col-lg-6">
       <p>end date: {{project.end_date}}</p>
     </div>
     <div class="col-lg-6">
        <span>{{project.percent}}% funded</span>
     </div>
-
+  </div>
     </div>
   </li>
 </ul>

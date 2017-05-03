@@ -18,7 +18,12 @@ function ProjectsIndexCtrl(Project, Category, filterFilter, orderByFilter, $scop
       .then((projects) => {
         vm.all = projects;
         filterItem();
-        determineWidth();
+        for(var i =0; i< vm.all.length; i++){
+        if(projects[i].percent > 100){
+          projects[i].percent = 100;
+        }
+      }
+
       });
   }
   getProjects();
@@ -40,12 +45,12 @@ function ProjectsIndexCtrl(Project, Category, filterFilter, orderByFilter, $scop
 
   filterItem();
 
-  function determineWidth(){
-    for(var i =0; i< vm.all.length; i++)
-    console.log(vm.all[i].percent);
-    document.getElementsByClassName("bars").style.width = `${vm.all[i].percent}%`;
-    }
-  
+  // function determineWidth(){
+  //   for(var i =0; i< vm.all.length; i++)
+  //   console.log(vm.all[i].percent);
+  //   document.getElementsByClassName("bars")[i].style.width = `${vm.all[i].percent}%`;
+  //   }
+
 
 }
 

@@ -1,7 +1,8 @@
-<div class="form">
+<div class="form-wrapper">
 
-<h2>Edit Item</h2>
-<form name="projectsEdit.editForm" ng-submit="projectsEdit.update()" novalidate>
+<h3>Edit Project</h3>
+<div class="form-style-4">
+<form class="form-inline" name="projectsEdit.editForm" ng-submit="projectsEdit.update()" novalidate>
 
     <div ng-messages="projectsEdit.editForm.title.$error" role="alert" ng-show="(projectsEdit.editForm.title.$touched)&&(projectsEdit.editForm.title.$invalid) ">
       <div ng-message="required">Title is required </div>
@@ -17,42 +18,43 @@
     </div>
 
   <div class="form-group">
-    <label for="name">Title</label>
+    <span for="name">Title</span>
     <input type="text" name="title" id="name" ng-model="projectsEdit.project.title" class="form-control" required>
   </div>
-  <div>
-    <label>Brief</label>
+  <div class="form-group">
+    <span>Brief</span>
     <textarea type="text" name="brief" ng-model="projectsEdit.project.brief" required></textarea>
   </div>
 
   <div class="form-group">
-    <label for="base64">Image</label>
+    <span for="base64">Image</span>
     <input type="file" base64 name="base64" id="base64" ng-model="projectsEdit.project.base64">
   </div>
 
-  <div>
-    <label>Video</label>
+  <div class="form-group">
+    <span>Video</span>
     <input type="text" ng-model="projectsEdit.project.video">
   </div>
 
-  <div>
-    <label>Target amount</label>
+  <div class="form-group">
+    <span>Target amount</span>
     <input type="number" name="target_amount" ng-model="projectsEdit.project.target_amount" required>
   </div>
 
-  <div>
-    <label>Category</label>
+  <div class="form-group">
+    <span>Category</span>
     <select ng-model="projectsEdit.project.category_id">
       <option disabled selected>Please select</option>
       <option ng-repeat="category in projectsEdit.categories" ng-value="{{category.id}}">{{category.name}}</option>
     </select>
   </div>
 
-  <div>
-    <label>End date</label>
+  <div class="form-group">
+    <span>End date</span>
     <input type="date" name="end_date" ng-model="projectsEdit.project.end_date" required>
   </div>
 
-  <button>Submit</button>
+  <button class="butt btn-2 btn-1g">Submit</button>
 </form>
+</div>
 </div>
